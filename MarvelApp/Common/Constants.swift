@@ -16,12 +16,14 @@ enum ServiceType {
 struct KeyNames {
     static let MarvelKey = "MARVEL_SERVICE_KEY"
     static let MarvelBasePath = "MARVEL_BASE_PATH"
+    static let MarvelPrivateKey = "MARVEL_PRIVATE_KEY"
 }
 
 struct Environment {
 
     //MARK: QA Keys
     static var MarvelQAKey: String = Environment.variable(named: KeyNames.MarvelKey) ?? CI.MarvelServiceKey
+    static var MarvelPrivateQAKey: String = Environment.variable(named: KeyNames.MarvelPrivateKey) ?? CI.MarvelPrivateKey
 
     //MARK: Production Keys
     static var MarvelProdKey: String = ""
@@ -35,5 +37,10 @@ struct Environment {
             return nil
         }
         return value
+    }
+
+    static func getMarvelHash() -> (String, String) {
+        let uuid = UUID().uuidString
+        return (uuid, "\(uuid)\(MarvelPrivateQAKey)\(MarvelQAKey)".md5)
     }
 }

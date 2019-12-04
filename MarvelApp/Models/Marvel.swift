@@ -11,12 +11,13 @@ import Foundation
 
 // MARK: - Character
 class Character: Codable {
-    let code, status, copyright, attributionText: String
+    let code: Int
+    let status, copyright, attributionText: String
     let attributionHTML: String
     let data: DataClass
     let etag: String
 
-    init(code: String, status: String, copyright: String, attributionText: String, attributionHTML: String, data: DataClass, etag: String) {
+    init(code: Int, status: String, copyright: String, attributionText: String, attributionHTML: String, data: DataClass, etag: String) {
         self.code = code
         self.status = status
         self.copyright = copyright
@@ -29,10 +30,10 @@ class Character: Codable {
 
 // MARK: - DataClass
 class DataClass: Codable {
-    let offset, limit, total, count: String
+    let offset, limit, total, count: Int
     let results: [MarvelCharacter]
 
-    init(offset: String, limit: String, total: String, count: String, results: [MarvelCharacter]) {
+    init(offset: Int, limit: Int, total: Int, count: Int, results: [MarvelCharacter]) {
         self.offset = offset
         self.limit = limit
         self.total = total
@@ -43,7 +44,8 @@ class DataClass: Codable {
 
 // MARK: - Result
 class MarvelCharacter: Codable {
-    let id, name, resultDescription, modified: String
+    let id: Int
+    let name, resultDescription, modified: String
     let resourceURI: String
     let urls: [URLElement]
     let thumbnail: Thumbnail
@@ -57,7 +59,7 @@ class MarvelCharacter: Codable {
         case modified, resourceURI, urls, thumbnail, comics, stories, events, series
     }
 
-    init(id: String, name: String, resultDescription: String, modified: String, resourceURI: String, urls: [URLElement], thumbnail: Thumbnail, comics: Comics, stories: Stories, events: Comics, series: Comics) {
+    init(id: Int, name: String, resultDescription: String, modified: String, resourceURI: String, urls: [URLElement], thumbnail: Thumbnail, comics: Comics, stories: Stories, events: Comics, series: Comics) {
         self.id = id
         self.name = name
         self.resultDescription = resultDescription
@@ -74,10 +76,11 @@ class MarvelCharacter: Codable {
 
 // MARK: - Comics
 class Comics: Codable {
-    let available, returned, collectionURI: String
+    let available, returned: Int
+    let collectionURI: String
     let items: [ComicsItem]
 
-    init(available: String, returned: String, collectionURI: String, items: [ComicsItem]) {
+    init(available: Int, returned: Int, collectionURI: String, items: [ComicsItem]) {
         self.available = available
         self.returned = returned
         self.collectionURI = collectionURI
@@ -97,10 +100,11 @@ class ComicsItem: Codable {
 
 // MARK: - Stories
 class Stories: Codable {
-    let available, returned, collectionURI: String
+    let available, returned: Int
+    let collectionURI: String
     let items: [StoriesItem]
 
-    init(available: String, returned: String, collectionURI: String, items: [StoriesItem]) {
+    init(available: Int, returned: Int, collectionURI: String, items: [StoriesItem]) {
         self.available = available
         self.returned = returned
         self.collectionURI = collectionURI

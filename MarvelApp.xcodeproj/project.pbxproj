@@ -22,6 +22,7 @@
 		DB831E322396E90A0035D570 /* CharactersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB831E312396E90A0035D570 /* CharactersProvider.swift */; };
 		DB831E352396E9B90035D570 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB831E342396E9B90035D570 /* Constants.swift */; };
 		DB831E372396EB040035D570 /* CI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB831E362396EB040035D570 /* CI.swift */; };
+		DB831E39239824470035D570 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB831E38239824470035D570 /* String+MD5.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		DB831E312396E90A0035D570 /* CharactersProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersProvider.swift; sourceTree = "<group>"; };
 		DB831E342396E9B90035D570 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DB831E362396EB040035D570 /* CI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI.swift; sourceTree = "<group>"; };
+		DB831E38239824470035D570 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		DDB7757A10D2CA7C6BFC394C /* Pods_MarvelAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F588467CCEADC52D3B76864B /* Pods-MarvelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp.release.xcconfig"; path = "Target Support Files/Pods-MarvelApp/Pods-MarvelApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				DB43520023972EF600D14D77 /* URLRequest+HTTPMethods.swift */,
+				DB831E38239824470035D570 /* String+MD5.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				DB4FDC902396CFD200B49C95 /* AppDelegate.swift in Sources */,
 				DB831E372396EB040035D570 /* CI.swift in Sources */,
 				DB4FDC922396CFD200B49C95 /* SceneDelegate.swift in Sources */,
+				DB831E39239824470035D570 /* String+MD5.swift in Sources */,
 				DB831E2F2396E8230035D570 /* Marvel.swift in Sources */,
 				DB831E352396E9B90035D570 /* Constants.swift in Sources */,
 			);

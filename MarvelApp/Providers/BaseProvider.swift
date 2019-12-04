@@ -20,8 +20,9 @@ class BaseProvider {
         var url: URL!
         if let q = queryString {
             url = handleQueryParams(params: q, path: urlPath)
+        } else {
+            url = URL(string: urlPath)!
         }
-        url = URL(string: urlPath)!
 
         let request = URLRequest(url: url, method: method, contentType: contentType, body: body)
 

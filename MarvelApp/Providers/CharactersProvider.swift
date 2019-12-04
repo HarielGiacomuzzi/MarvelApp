@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CharacterProviderProtocol {
-    func getCharacters(offset: Int, completion: @escaping (Result<[MarvelCharacter], Error>) -> Void )
+    func getCharacters(offset: Int, limit: Int, completion: @escaping (Result<[MarvelCharacter], Error>) -> Void )
     func getCharacterById(id: Int, completion: @escaping (Result<Data, Error>) -> Void)
 }
 
@@ -33,14 +33,19 @@ class CharacterProvider: BaseProvider, CharacterProviderProtocol {
         ]
     }
 
-    func getCharacters(offset: Int, completion: @escaping (Result<[MarvelCharacter], Error>) -> Void) {
+    func getCharacters(offset: Int, limit: Int = 100, completion: @escaping (Result<[MarvelCharacter], Error>) -> Void) {
         var params = baseParams
+
+        let hashComponents = Environment.getMarvelHash()
+
         params!["offset"] = "\(offset)"
-        params!["limit"] = "50"
+        params!["limit"] = "\(limit)"
+        params!["ts"] = hashComponents.0
+        params!["hash"] = hashComponents.1
 
         callAPI(
             queryString: params,
-            urlPath: "\(String(describing: basePath))/v1/public/characters") { res in
+            urlPath: "\(basePath ?? "")/v1/public/characters") { res in
                 switch res {
                 case .failure(let error):
                     debugPrint("There's an error getting characters list: \(error.localizedDescription)")

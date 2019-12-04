@@ -67,6 +67,11 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
+            key = "MARVEL_PRIVATE_KEY"
+            value = "f7cc9a9d449c1930562139d1f79bdd5738c7901d"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "MARVEL_BASE_PATH"
             value = "http://gateway.marvel.com"
             isEnabled = "YES">
