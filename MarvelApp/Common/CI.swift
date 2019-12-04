@@ -9,5 +9,6 @@
 import Foundation
 
 struct CI {
-    static var MarvelServiceKey: String = "$(SECRET_ENVIRONMENT_KEY)"
+    static var MarvelServiceKey: String = "$(\(KeyNames.MarvelKey))"
+    static var MarvelBasePath: String = "$(\(KeyNames.MarvelBasePath))"
 }

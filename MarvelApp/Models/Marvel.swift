@@ -30,9 +30,9 @@ class Character: Codable {
 // MARK: - DataClass
 class DataClass: Codable {
     let offset, limit, total, count: String
-    let results: [Result]
+    let results: [MarvelCharacter]
 
-    init(offset: String, limit: String, total: String, count: String, results: [Result]) {
+    init(offset: String, limit: String, total: String, count: String, results: [MarvelCharacter]) {
         self.offset = offset
         self.limit = limit
         self.total = total
@@ -42,7 +42,7 @@ class DataClass: Codable {
 }
 
 // MARK: - Result
-class Result: Codable {
+class MarvelCharacter: Codable {
     let id, name, resultDescription, modified: String
     let resourceURI: String
     let urls: [URLElement]
