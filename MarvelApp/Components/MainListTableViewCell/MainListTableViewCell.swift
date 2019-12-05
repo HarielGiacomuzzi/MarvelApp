@@ -9,9 +9,10 @@
 import UIKit
 
 class MainListTableViewCell: UITableViewCell {
+
     @IBOutlet var heroImageView: UIImageView!
     @IBOutlet var heroNameLabel: UILabel!
-
+    
     private var heroModel: MainListCellModel? {
         didSet {
             setupHeroName()

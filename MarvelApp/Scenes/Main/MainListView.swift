@@ -10,13 +10,7 @@ import UIKit
 
 class MainListView: UIViewController {
     //MARK: Outlets
-    @IBOutlet var tableView: UITableView! {
-        didSet {
-            self.tableView.register(MainListTableViewCell.self, forCellReuseIdentifier: CellIdentifiers.MainListCell)
-
-            self.tableView.register(UINib(nibName: "MainListTableViewCell", bundle: nil), forCellReuseIdentifier: CellIdentifiers.MainListCell)
-        }
-    }
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     //MARK: Variables
@@ -37,7 +31,12 @@ class MainListView: UIViewController {
 }
 
 extension MainListView: UITableViewDelegate {
-
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y >= scrollView.contentSize.height * 0.8 {
+            self.activityIndicator.startAnimating()
+            self.viewModel?.getHeros()
+        }
+    }
 }
 
 extension MainListView: UITableViewDataSource {
@@ -46,7 +45,7 @@ extension MainListView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.MainListCell) as? MainListTableViewCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.MainListCell, for: indexPath) as? MainListTableViewCell,
             let viewModel = viewModel else {
             return UITableViewCell()
         }
@@ -60,9 +59,9 @@ extension MainListView: UITableViewDataSource {
 extension MainListView: MainListViewModelDelegate {
 
     func didFetchedHeros() {
-        DispatchQueue.main.sync {
-            self.tableView.reloadData()
+        DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
+            self.tableView.reloadData()
         }
     }
 }

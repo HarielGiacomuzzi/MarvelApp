@@ -10,25 +10,46 @@ import XCTest
 @testable import MarvelApp
 
 class MarvelAppTests: XCTestCase {
+    var provider: CharacterProviderProtocol!
+    var service: MainListServiceProtocol!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        provider = CharacterProvider(backendService: .QA)
+        service = MainListService(provider: provider)
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        provider = nil
+        service = nil
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    func testGetAllCharacters() {
+        let expectation = XCTestExpectation(description: "Wait for service response")
+        expectation.expectedFulfillmentCount = 1
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        provider.getCharacters(offset: 0, limit: 10) { (result) in
+            switch result {
+            case .failure(let error):
+                expectation.fulfill()
+                XCTFail("Failed provider get characters test, details: \(error.localizedDescription)")
+            case .success(let characters):
+                expectation.fulfill()
+                XCTAssertTrue(characters.count == 10)
+            }
         }
+
+        wait(for: [expectation], timeout: 15.0)
     }
 
+    func testServiceGetCharacters() {
+        let expectation = XCTestExpectation(description: "Wait for service response")
+        expectation.expectedFulfillmentCount = 1
+
+        service.getAllHeros { characters in
+            expectation.fulfill()
+            XCTAssertTrue(characters.count == 50)
+        }
+
+        wait(for: [expectation], timeout: 15.0)
+    }
 }

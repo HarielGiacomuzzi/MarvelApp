@@ -11,6 +11,7 @@ import UIKit
 
 class ImageCache {
     static let cache: NSCache<NSString, UIImage> = NSCache<NSString, UIImage>()
+    static let imageProvider = MarvelImageProvider()
 
     private static func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
@@ -21,8 +22,8 @@ class ImageCache {
         if let cachedImage = cache.object(forKey: url.absoluteString as NSString) {
             completion(cachedImage)
         } else {
-           getData(from: url) { data, response, error in
-               guard let data = data, error == nil else { return }
+            imageProvider.getImage(url: url) { data in
+               guard let data = data else { return }
                DispatchQueue.main.async() {
                     guard let image = UIImage(data: data) else { return }
                     cache.setObject(image, forKey: url.absoluteString as NSString)
