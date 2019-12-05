@@ -43,7 +43,7 @@ class DataClass: Codable {
 }
 
 // MARK: - Result
-class MarvelCharacter: Codable {
+class MarvelCharacter: Codable, Hashable {
     let id: Int
     let name, resultDescription, modified: String
     let resourceURI: String
@@ -71,6 +71,14 @@ class MarvelCharacter: Codable {
         self.stories = stories
         self.events = events
         self.series = series
+    }
+
+    static func == (lhs: MarvelCharacter, rhs: MarvelCharacter) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
 

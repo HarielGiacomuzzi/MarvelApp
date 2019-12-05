@@ -19,6 +19,10 @@ struct KeyNames {
     static let MarvelPrivateKey = "MARVEL_PRIVATE_KEY"
 }
 
+struct CellIdentifiers {
+    static let MainListCell = "heroCell"
+}
+
 struct Environment {
 
     //MARK: QA Keys
