@@ -38,4 +38,16 @@ class MainListService: MainListServiceProtocol {
             }
         }
     }
+
+    func getHeroById(id: Int, completion: @escaping (MarvelCharacter?) -> Void) {
+        provider.getCharacterById(id: id) { (result) in
+            switch result {
+            case .success(let character):
+                completion(character)
+            case .failure(let error):
+                debugPrint("Handle this error properly: \(error.localizedDescription)")
+                completion(nil)
+            }
+        }
+    }
 }

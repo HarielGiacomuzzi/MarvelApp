@@ -30,6 +30,8 @@
 		DB831E352396E9B90035D570 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB831E342396E9B90035D570 /* Constants.swift */; };
 		DB831E372396EB040035D570 /* CI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB831E362396EB040035D570 /* CI.swift */; };
 		DB831E39239824470035D570 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB831E38239824470035D570 /* String+MD5.swift */; };
+		DB831E3D23996D450035D570 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB831E3C23996D450035D570 /* CharacterDetailView.swift */; };
+		DB831E3F23996D500035D570 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB831E3E23996D500035D570 /* CharacterDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		DB831E342396E9B90035D570 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DB831E362396EB040035D570 /* CI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI.swift; sourceTree = "<group>"; };
 		DB831E38239824470035D570 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
+		DB831E3C23996D450035D570 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		DB831E3E23996D500035D570 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		DDB7757A10D2CA7C6BFC394C /* Pods_MarvelAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F588467CCEADC52D3B76864B /* Pods-MarvelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp.release.xcconfig"; path = "Target Support Files/Pods-MarvelApp/Pods-MarvelApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +122,7 @@
 		DB43520423988D9300D14D77 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DB831E3B23996D310035D570 /* CharacterDetail */,
 				DB43520523988D9C00D14D77 /* Main */,
 			);
 			path = Scenes;
@@ -232,6 +237,15 @@
 				DB435212239892F500D14D77 /* ImageCache.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		DB831E3B23996D310035D570 /* CharacterDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DB831E3C23996D450035D570 /* CharacterDetailView.swift */,
+				DB831E3E23996D500035D570 /* CharacterDetailViewModel.swift */,
+			);
+			path = CharacterDetail;
 			sourceTree = "<group>";
 		};
 		F14A95D3C1621CE2ECEB35E9 /* Pods */ = {
@@ -396,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB302EA2239949F900EBF02B /* MarvelImageProvider.swift in Sources */,
+				DB831E3F23996D500035D570 /* CharacterDetailViewModel.swift in Sources */,
 				DB435213239892F500D14D77 /* ImageCache.swift in Sources */,
 				DB831E322396E90A0035D570 /* CharactersProvider.swift in Sources */,
 				DB4352162398974900D14D77 /* MainListService.swift in Sources */,
@@ -404,6 +419,7 @@
 				DB43520E2398907200D14D77 /* MainListCellModel.swift in Sources */,
 				DB43520123972EF600D14D77 /* URLRequest+HTTPMethods.swift in Sources */,
 				DB435211239891FD00D14D77 /* UIImage+ImageFromURL.swift in Sources */,
+				DB831E3D23996D450035D570 /* CharacterDetailView.swift in Sources */,
 				DB4FDC902396CFD200B49C95 /* AppDelegate.swift in Sources */,
 				DB831E372396EB040035D570 /* CI.swift in Sources */,
 				DB4FDC922396CFD200B49C95 /* SceneDelegate.swift in Sources */,

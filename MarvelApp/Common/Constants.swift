@@ -23,6 +23,10 @@ struct CellIdentifiers {
     static let MainListCell = "heroCell"
 }
 
+struct SegueIdentifiers {
+    static let detailView = "gotoDetail"
+}
+
 struct Environment {
 
     //MARK: QA Keys

@@ -10,7 +10,7 @@ import Foundation
 
 protocol CharacterProviderProtocol {
     func getCharacters(offset: Int, limit: Int, completion: @escaping (Result<[MarvelCharacter], Error>) -> Void )
-    func getCharacterById(id: Int, completion: @escaping (Result<Data, Error>) -> Void)
+    func getCharacterById(id: Int, completion: @escaping (Result<MarvelCharacter, Error>) -> Void)
 }
 
 
@@ -61,7 +61,30 @@ class CharacterProvider: BaseProvider, CharacterProviderProtocol {
         }
     }
 
-    func getCharacterById(id: Int, completion: @escaping (Result<Data, Error>) -> Void) {
-        //TODO: Continue 
+    func getCharacterById(id: Int, completion: @escaping (Result<MarvelCharacter, Error>) -> Void) {
+        ///v1/public/characters/
+        var params = baseParams
+
+        let hashComponents = Environment.getMarvelHash()
+        params!["ts"] = hashComponents.0
+        params!["hash"] = hashComponents.1
+
+        callAPI(
+            queryString: params,
+            urlPath: "\(basePath ?? "")/v1/public/characters/\(id)") { res in
+                switch res {
+                case .failure(let error):
+                    debugPrint("There's an error getting character: \(error.localizedDescription)")
+                case .success(let data):
+                    do {
+                        let resp = try JSONDecoder().decode(Character.self, from: data)
+                        guard let character = resp.data.results.first else { return }
+                        completion(.success(character))
+                    } catch let error {
+                        debugPrint("There's an error while decoding marvel character response: \(error.localizedDescription)")
+                        completion(.failure(error))
+                    }
+                }
+        }
     }
 }

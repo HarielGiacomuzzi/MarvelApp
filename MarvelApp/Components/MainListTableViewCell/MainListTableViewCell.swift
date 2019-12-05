@@ -10,7 +10,11 @@ import UIKit
 
 class MainListTableViewCell: UITableViewCell {
 
-    @IBOutlet var heroImageView: UIImageView!
+    @IBOutlet var heroImageView: UIImageView! {
+        didSet {
+            self.heroImageView.contentMode = .scaleAspectFit
+        }
+    }
     @IBOutlet var heroNameLabel: UILabel!
     
     private var heroModel: MainListCellModel? {
@@ -40,7 +44,7 @@ class MainListTableViewCell: UITableViewCell {
     }
 
     private func setupImage() {
-        heroImageView.downloadImage(from: heroModel?.hero.thumbnail.path ?? "")
+        heroImageView.downloadImage(from: "\(heroModel?.hero.thumbnail.path ?? "").\(heroModel?.hero.thumbnail.thumbnailExtension ?? "")" )
     }
 
     func setup(model: MainListCellModel) {

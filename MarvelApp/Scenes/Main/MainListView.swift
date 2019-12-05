@@ -28,6 +28,14 @@ class MainListView: UIViewController {
         viewModel?.getHeros()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailView = segue.destination as? CharacterDetailView,
+           let hero = sender as? MarvelCharacter {
+            let model = CharacterDetailViewModel(hero: hero)
+            detailView.viewModel = model
+        }
+    }
+
 }
 
 extension MainListView: UITableViewDelegate {
@@ -36,6 +44,11 @@ extension MainListView: UITableViewDelegate {
             self.activityIndicator.startAnimating()
             self.viewModel?.getHeros()
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let hero = viewModel?.heros[indexPath.row] else { return }
+        performSegue(withIdentifier: SegueIdentifiers.detailView, sender: hero)
     }
 }
 

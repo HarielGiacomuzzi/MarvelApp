@@ -15,22 +15,7 @@ class MarvelImageProvider: BaseProvider {
     }
 
     func getImage(url: URL, backendService: ServiceType = .QA, completion: @escaping (Data?) -> Void) {
-        var  serviceKey: String = ""
-        switch backendService {
-        case .QA:
-            serviceKey = Environment.MarvelQAKey
-        case .Production:
-            serviceKey = Environment.MarvelProdKey
-        }
-
-        let hashComponents = Environment.getMarvelHash()
-        let params: Dictionary<String, String> = [
-            "apikey": serviceKey,
-            "ts": hashComponents.0,
-            "hash": hashComponents.1
-        ]
-
-        callAPI(queryString: params, urlPath: url.absoluteString) { (result) in
+        callAPI(queryString: nil, urlPath: url.absoluteString) { (result) in
             switch result {
             case .success(let data):
                 completion(data)
